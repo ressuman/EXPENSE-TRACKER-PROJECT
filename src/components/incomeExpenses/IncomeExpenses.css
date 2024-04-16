@@ -1,0 +1,45 @@
+.inc-exp-container {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  margin: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.inc-exp-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.inc-exp-container > div {
+  flex: 1;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.inc-exp-container > div:hover {
+  transform: scale(1.05);
+}
+
+.inc-exp-container > div:first-of-type {
+  border-right: 1px solid #dedede;
+}
+
+.money {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.money.plus {
+  color: #2ecc71;
+}
+
+.money.minus {
+  color: #c0392b;
+}
