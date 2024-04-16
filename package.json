@@ -1,0 +1,31 @@
+{
+  "name": "personal-project-1-react-expense-tracker-backend",
+  "packageManager": "yarn@3.6.3",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "version": "1.0.0",
+  "description": "Backend for personal project 1 - expense tracker",
+  "main": "./index.js",
+  "author": {
+    "name": "Richard Essuman",
+    "email": "ressuman001@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "expense",
+    "tracker"
+  ],
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  }
+}
