@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./Transactions.css";
-import { GlobalContext } from "../../context/GlobalState.jsx";
+import { GlobalContext } from "../../context/GlobalState";
 
 export default function AddTransaction() {
   const { addTransaction } = useContext(GlobalContext);
@@ -11,10 +11,15 @@ export default function AddTransaction() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!text.trim() || isNaN(amount) || amount === 0) {
+      alert("Please enter valid text and amount.");
+      return;
+    }
+
     const newTransaction = {
       id: Math.floor(Math.random() * 10000000),
-      text,
-      amount: +amount, // convert string to number
+      text: text.toUpperCase(),
+      amount: +amount,
     };
 
     addTransaction(newTransaction);
@@ -47,7 +52,9 @@ export default function AddTransaction() {
             placeholder="Enter amount..."
           />
         </div>
-        <button className="btn">Add transaction</button>
+        <button className="btn" type="submit">
+          Add transaction
+        </button>
       </form>
     </div>
   );
