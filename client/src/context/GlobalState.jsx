@@ -1,6 +1,6 @@
 import { createContext, useReducer, useMemo } from "react";
 import PropTypes from "prop-types";
-import AppReducer from "./AppReducer.jsx";
+import AppReducer from "./AppReducer";
 import axios from "axios";
 
 // Initial state
@@ -19,7 +19,7 @@ export const GlobalProvider = ({ children }) => {
   // Actions
   async function getTransactions() {
     try {
-      const res = await axios.get("/api/v1/transactions");
+      const res = await axios.get("http://localhost:5183/api/v1/transactions");
 
       dispatch({
         type: "GET_TRANSACTIONS",
@@ -35,7 +35,7 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteTransaction(id) {
     try {
-      await axios.delete(`/api/v1/transactions/${id}`);
+      await axios.delete(`http://localhost:5183/api/v1/transactions/${id}`);
 
       dispatch({
         type: "DELETE_TRANSACTION",
@@ -57,7 +57,11 @@ export const GlobalProvider = ({ children }) => {
     };
 
     try {
-      const res = await axios.post("/api/v1/transactions", transaction, config);
+      const res = await axios.post(
+        "http://localhost:5183/api/v1/transactions",
+        transaction,
+        config
+      );
 
       dispatch({
         type: "ADD_TRANSACTION",
@@ -80,7 +84,7 @@ export const GlobalProvider = ({ children }) => {
       deleteTransaction,
       addTransaction,
     }),
-    [state.transactions, state.error, state.loading] // Include the missing dependencies in the dependency array
+    [state] // Include the missing dependencies in the dependency array
   );
 
   return (
@@ -93,3 +97,5 @@ export const GlobalProvider = ({ children }) => {
 GlobalProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export default GlobalProvider;
