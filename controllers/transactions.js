@@ -6,7 +6,7 @@ const TransactionModel = require("../model/Transaction");
 exports.getTransactions = async (req, res) => {
   try {
     const transactions = await TransactionModel.find();
-    console.log("GT", transactions);
+
     return res.status(200).json({
       success: true,
       status: true,
