@@ -1,3 +1,9 @@
+./node_modules
+./config/config.env
+./.yarn
+./client/node_modules
+./client/.yarn
+
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
