@@ -33,9 +33,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const PORT = process.env.PORT || 5100;
+const mongoUrl = process.env.MONGO_URI;
 
 (async function () {
-  await connectDB().then(() => {
+  await connectDB(mongoUrl).then(() => {
     app.listen(
       PORT,
       console.log(
