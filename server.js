@@ -14,7 +14,11 @@ dotenv.config({ path: "./config/config.env" });
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://ressuman-expense-tracker-mern-production.up.railway.app",
+  })
+);
 
 app.use(express.json());
 
