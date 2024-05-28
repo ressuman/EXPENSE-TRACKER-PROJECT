@@ -19,8 +19,9 @@ export const GlobalProvider = ({ children }) => {
   // Actions
   async function getTransactions() {
     try {
-      const res = await axios.get("http://localhost:5183/api/v1/transactions");
-
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/transactions`
+      );
       dispatch({
         type: "GET_TRANSACTIONS",
         payload: res.data.data,
@@ -35,7 +36,9 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteTransaction(id) {
     try {
-      await axios.delete(`http://localhost:5183/api/v1/transactions/${id}`);
+      await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/transactions/${id}`
+      );
 
       dispatch({
         type: "DELETE_TRANSACTION",
@@ -58,7 +61,7 @@ export const GlobalProvider = ({ children }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5183/api/v1/transactions",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/transactions`,
         transaction,
         config
       );
