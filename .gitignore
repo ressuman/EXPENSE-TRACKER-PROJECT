@@ -3,6 +3,7 @@ config/config.env
 .yarn
 client/node_modules
 client/.yarn
+client/.env
 
 
 .yarn/*
