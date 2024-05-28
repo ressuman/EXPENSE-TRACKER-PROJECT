@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import PropTypes from "prop-types";
+
 import "./Balance.css";
 import { GlobalContext } from "../../context/GlobalState";
 import { numberWithCommas } from "../../utils/format";

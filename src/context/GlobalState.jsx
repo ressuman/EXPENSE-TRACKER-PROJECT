@@ -1,6 +1,6 @@
 import { createContext, useReducer, useMemo } from "react";
 import PropTypes from "prop-types";
-import AppReducer from "./AppReducer.jsx";
+import AppReducer from "./AppReducer";
 import axios from "axios";
 
 // Initial state
