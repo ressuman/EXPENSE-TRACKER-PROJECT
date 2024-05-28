@@ -1,4 +1,4 @@
-//const path = require("path");
+const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
 const colors = require("colors");
@@ -10,7 +10,7 @@ const transactions = require("./routes/transactions");
 
 dotenv.config({ path: "./config/config.env" });
 
-connectDB();
+//connectDB();
 
 const app = express();
 
@@ -24,8 +24,9 @@ if (process.env.NODE_ENV === "development") {
 
 app.use("/api/v1/transactions", transactions);
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/dist"));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "public")));
+}
 
 //   app.get("*", (req, res) =>
 //     res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"))
@@ -33,11 +34,16 @@ app.use("/api/v1/transactions", transactions);
 // }
 
 const PORT = process.env.PORT || 5100;
+const mongoUrl = process.env.MONGO_URI;
 
-app.listen(
-  PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port http://localhost:${PORT}`
-      .yellow.bold
-  )
-);
+(async function () {
+  await connectDB(mongoUrl).then(() => {
+    app.listen(
+      PORT,
+      console.log(
+        `Server running in ${process.env.NODE_ENV} mode on port http://localhost:${PORT}`
+          .yellow.bold
+      )
+    );
+  });
+})();
